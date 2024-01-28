@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "name": "Undepress membership",
+    "version": "1.0",
+    "description": "An attempt to fill the empty boxes of depression in vods of channels where the membership is closed",
+    "browser_action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "images/icon.png",
+        "48": "images/icon.png",
+        "128": "images/icon.png"
+      }
+    },
+    "permissions": [
+      "activeTab"
+    ],
+    "icons": {
+      "16": "images/icon.png",
+      "48": "images/icon.png",
+      "128": "images/icon.png"
+    },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
