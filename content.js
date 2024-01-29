@@ -3,26 +3,7 @@ var isRunning = false;
 var isPomu = false;
 var isComment = false;
 var isLiveChat = false;
-// const memberBadge = {
-//   // member 1 month
-//   "https://yt3.ggpht.com/Otv-LqYLhRy6jMTfXN_j8wo7dh0_UxEuAzGM8hhZLzoNdl16NRov8SqniPBUY90jnVMYlklKI0eHLLve=s32-k-nd":
-//     '<img src="https://i.ibb.co/jJtTw4G/1-seed.png" alt="1-seed" style="height:16px;width:16px">',
-//   //member 2 month
-//   "https://yt3.ggpht.com/A4R5j7sscJWTU0NwxoUSBQm4hcVfH7De8jrukuQ_05ITM-lNx5ENqR8zm7LFQXjkmiKj7pF85iBIfklyOg=s32-k-nd":
-//     '<img src="https://i.ibb.co/r5K4pRf/2-sprout.png" alt="2-sprout" style="height:16px;width:16px">',
-//   //member 3 month
-//   "https://yt3.ggpht.com/6YYy6158MQ8Y1a05XVlQUhrXpQRz8T-T2hCOnKhnn_6ysM3JjufMVBnO6oi5rwj-HFPl8A7jqpe2d4uhaQ=s32-k-nd":
-//     '<img src="https://i.ibb.co/qg1DLwk/3-flower.png" alt="3-flower" style="height:16px;width:16px">',
-//   //member 6 month
-//   "https://yt3.ggpht.com/gAq7jDekvG5e_Az-VnKhS-Sy-rZDgyHIdGQAhks2iWlN7rMkiTlxnW5ztMW96ynyEIG1hMe67LLLCP6q=s32-k-nd":
-//     '<img src="https://i.ibb.co/7bBPmkr/6-silverpp.png" alt="6-silverpp" style="height:16px;width:16px">',
-//   //member 1 year
-//   "https://yt3.ggpht.com/8EkhzT5LZB8Y1DrCywZwPACLpgvLpFrfkfFtT4Az8za6De8tiPys0k-6tDOSqvn8mfGAz9c8oz_rr9R_=s32-k-nd":
-//     '<img src="https://i.ibb.co/hM5YVyb/12-goldenpp.png" alt="12-goldenpp" style="height:16px;width:16px">',
-//   //member 2 year
-//   "https://yt3.ggpht.com/IJi2sP8aHFPN6iCbBPzRgu54MKttJyG39knrNOKfop90WkLcO-BegRNWnZ1PveuTHqPTNO16x2ne5Tw=s32-k-nd":
-//     '<img src="https://i.ibb.co/wCNxtXN/24-Pomu.png" alt="24-Pomu" style="height:16px;width:16px">',
-// };
+
 const memberBadge = {
   // member 1 month
   "https://yt3.ggpht.com/Otv-LqYLhRy6jMTfXN_j8wo7dh0_UxEuAzGM8hhZLzoNdl16NRov8SqniPBUY90jnVMYlklKI0eHLLve=s32-k-nd":
@@ -141,7 +122,6 @@ function getWeightedRandomObject(array) {
   }
 }
 
-//TODO: MAKE BETTER TRIGGERS (intercept ajax?)
 //1. check if the page is a youtube video
 if (window.location.href.includes("www.youtube.com/watch")) {
   console.log("content manipulation is running");
@@ -256,7 +236,7 @@ if (window.location.href.includes("www.youtube.com/watch")) {
     }
   }, 20);
 
-  //comments checker //can be slow since comments are not constantly rushing in
+  //comments checker //updated rarely since comments are not constantly rushing in
   let commentsChecker = setInterval(() => {
     var content = document.querySelectorAll(
       "div.ytd-item-section-renderer#contents"
