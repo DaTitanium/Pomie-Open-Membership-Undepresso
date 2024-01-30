@@ -21,3 +21,8 @@ I made this as a chrome extension and tested it in Google Chrome and Microsoft E
 ### 6. Select the folder extracted from the zip file. (This folder should contain the manifest.json file if you check through file explorer)
 
 ### 7. Enjoy pomu's cuteness without being distracted by empty boxes!
+
+## Additional info
+- This extension should run automatically in videos of pomu's channel and not do anything in other videos
+- Might need to refresh the video page after installing the extension
+- I think videos played from autoplay is broken, just refresh again if this happens
