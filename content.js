@@ -4,6 +4,8 @@ var isPomu = false;
 var isComment = false;
 var isLiveChat = false;
 
+var currentMood = "_song_cover";
+
 const memberBadge = {
   // member 1 month
   "https://yt3.ggpht.com/Otv-LqYLhRy6jMTfXN_j8wo7dh0_UxEuAzGM8hhZLzoNdl16NRov8SqniPBUY90jnVMYlklKI0eHLLve=s32-k-nd":
@@ -72,6 +74,37 @@ const emotes = {
     '<img src="https://i.ibb.co/VxQ7ggJ/verycool.webp" alt="verycool" style="height:24px;width:24px;margin-right:2px">',
   _headpat:
     '<img src="https://i.ibb.co/q7wTQQR/headpat.webp" alt="headpat" style="height:24px;width:24px;margin-right:2px">',
+  _excited:
+    '<img src="https://i.ibb.co/djrPNTW/excited.webp" alt="excited" style="height:24px;width:24px;margin-right:2px">',
+  _drool:
+    '<img src="https://i.ibb.co/xh17DpH/drool.webp" alt="drool" style="height:24px;width:24px;margin-right:2px">',
+  _sleep:
+    '<img src="https://i.ibb.co/CwM5KNr/sleep.webp" alt="sleep" style="height:24px;width:24px;margin-right:2px">',
+  _bonk:
+    '<img src="https://i.ibb.co/0hgHpb1/bonk.webp" alt="bonk" style="height:24px;width:24px;margin-right:2px">',
+  _angry:
+    '<img src="https://i.ibb.co/jJNWTHh/angry.webp" alt="angry" style="height:24px;width:24px;margin-right:2px">',
+  _pien:
+    '<img src="https://i.ibb.co/Yf1c68N/pien.webp" alt="pien" style="height:24px;width:24px;margin-right:2px">',
+  _notlikthis:
+    '<img src="https://i.ibb.co/v1jZk3X/notlikthis.webp" alt="notlikthis" style="height:24px;width:24px;margin-right:2px">',
+  _ded: '<img src="https://i.ibb.co/4WnS4jr/ded.webp" alt="ded" style="height:24px;width:24px;margin-right:2px">',
+  _choochoo:
+    '<img src="https://i.ibb.co/k6HS543/choochoo.webp" alt="choochoo" style="height:24px;width:24px;margin-right:2px">',
+  _pomusuke:
+    '<img src="https://i.ibb.co/GR7MV4f/pomusuke.webp" alt="pomusuke" style="height:24px;width:24px;margin-right:2px">',
+  _pomusuke2:
+    '<img src="https://i.ibb.co/s5dTBkx/pomusuke2.webp" alt="pomusuke2" style="height:24px;width:24px;margin-right:2px">',
+  _hotdog:
+    '<img src="https://i.ibb.co/SNdjwC8/hotdog.webp" alt="hotdog" style="height:24px;width:24px;margin-right:2px">',
+  _small9cm:
+    '<img src="https://i.ibb.co/P4cns8n/small9cm.webp" alt="small9cm" style="height:24px;width:24px;margin-right:2px">',
+  _pray:
+    '<img src="https://i.ibb.co/89mjwDb/pray.webp" alt="pray" style="height:24px;width:24px;margin-right:2px">',
+  _sippy:
+    '<img src="https://i.ibb.co/m42ZrRn/sippy.webp" alt="sippy" style="height:24px;width:24px;margin-right:2px">',
+  _think:
+    '<img src="https://i.ibb.co/CBdWDFg/think.webp" alt="think" style="height:24px;width:24px;margin-right:2px">',
 };
 
 const emoteGroup = {
@@ -81,6 +114,8 @@ const emoteGroup = {
   _3_cheer_cool: emotes._penlight + emotes._sunglass + emotes._penlight,
   _3_cheer_yay: emotes._penlight + emotes._yay + emotes._penlight,
   _3_cheer_cry: emotes._penlight + emotes._cry + emotes._penlight,
+  _3_cheer_placehold: emotes._penlight + emotes._placehold + emotes._penlight,
+  _3_cheer_love: emotes._penlight + emotes._love + emotes._penlight,
   _3_otsupp: emotes._otsu + emotes._ppp + emotes._ppp,
   _6_impomu:
     emotes._iii +
@@ -99,15 +134,92 @@ const emoteGroup = {
     emotes._uuu,
 };
 
-const mood = {
+const moodRandomWeights = {
   _song_cover: [
-    { item: emotes._love, weight: 7 },
-    { item: emotes._tiger, weight: 3 },
+    { item: emotes._love, weight: 5 },
+    { item: emotes._tiger, weight: 4 },
     { item: emotes._placehold, weight: 3 },
     { item: emotes._yay, weight: 2 },
-    { item: emotes._cry, weight: 2 },
+    { item: emotes._cry, weight: 1 },
+  ],
+  _scared: [
+    { item: emotes._censored, weight: 1 },
+    { item: emotes._fear, weight: 6 },
+    { item: emotes._panic, weight: 3 },
+    { item: emotes._pien, weight: 1 },
+    { item: emotes._notlikthis, weight: 2 },
+    { item: emotes._ded, weight: 1 },
+  ],
+  _blush: [
+    { item: emotes._blush, weight: 6 },
+    { item: emotes._love, weight: 1 },
+    { item: emotes._drool, weight: 1 },
+    { item: emotes._confusion, weight: 1 },
+  ],
+  _sleepy: [
+    { item: emotes._sleep, weight: 5 },
+    { item: emotes._drool, weight: 1 },
+    { item: emotes._headpat, weight: 2 },
+  ],
+  _neutral: [
+    { item: emotes._small9cm, weight: 1 },
+    { item: emotes._pomudachi, weight: 1 },
+    { item: emotes._wow, weight: 1 },
+    { item: emotes._yay, weight: 2 },
+    { item: emotes._love, weight: 2 },
+    { item: emotes._rofl, weight: 1 },
+  ],
+  _angry: [
+    { item: emotes._angry, weight: 3 },
+    { item: emotes._bonk, weight: 1 },
+    { item: emotes._pomdeadpan, weight: 1 },
+  ],
+  _cry: [
+    { item: emotes._cry, weight: 3 },
+    { item: emotes._pien, weight: 1 },
+  ],
+  _cool: [
+    { item: emotes._sunglass, weight: 3 },
+    { item: emotes._excited, weight: 2 },
+    { item: emotes._verycool, weight: 0.5 },
+  ],
+  _huh: [
+    { item: emotes._think, weight: 2 },
+    { item: emotes._confusion, weight: 4 },
+    { item: emotes._fear, weight: 1 },
+  ],
+  _hotdog: [{ item: emotes._hotdog, weight: 4 }],
+  _choochoo: [{ item: emotes._choochoo, weight: 4 }],
+  _cat: [
+    { item: emotes._pomusuke, weight: 2 },
+    { item: emotes._pomusuke2, weight: 2 },
+    { item: emotes._love, weight: 1 },
   ],
 };
+
+function changeMood(newMood) {
+  console.log("set mood to " + newMood);
+  currentMood = newMood;
+  if (!iframe) {
+    iframe = document.getElementById("chatframe");
+  }
+  if (!frdoc) {
+    frdoc = iframe.contentDocument || iframe.contentWindow.document;
+  }
+  if (frdoc) {
+    var chatlist = frdoc.querySelectorAll("#message");
+    if (chatlist.length == 0) {
+      iframe = document.getElementById("chatFrame");
+      frdoc = iframe.contentDocument || iframe.contentWindow.document;
+    }
+  }
+}
+
+chrome.runtime.onMessage.addListener(function (message, sender, sendResponse) {
+  if (message.action === "setMood") {
+    changeMood(message.payload);
+  }
+});
 
 //input array [{item, weight}]
 function getWeightedRandomObject(array) {
@@ -135,17 +247,59 @@ if (window.location.href.includes("www.youtube.com/watch")) {
     //only works for pomu videos
     if (isPomu) {
       const chatlist = frdoc.querySelectorAll("#message");
+      lolcount = 0;
       chatlist.forEach((element) => {
         var message = element.innerHTML.toLowerCase();
-        if (/lo+l/i.test(message) || /lmf?ao/i.test(message)) {
+        if (/lo+l/i.test(message) || /lmf?a+o/i.test(message)) {
           lolcount += 4;
+        } else {
+          lolcount -= 1;
+          if (lolcount < 0) lolcount = 0;
         }
-        if (!message.includes("□")) return;
+        if (!message.includes("□")) {
+          return;
+        }
 
+        //i hearthand pomu
+        if (message.includes("□□□□□□□")) {
+          element.innerHTML = element.innerHTML.replaceAll(
+            "□□□□□□□",
+            emoteGroup._7_iluvpomu
+          );
+        } //impomu
+        else if (/□□\s*□□□□/.test(message)) {
+          element.innerHTML = element.innerHTML.replaceAll(
+            /□□\s*□□□□/g,
+            emoteGroup._6_impomu
+          );
+        }
+        // cool moment
+        if (
+          message.includes("gamer") ||
+          message.includes("gaming") ||
+          message.includes("good") ||
+          message.includes("cool")
+        ) {
+          element.innerHTML = element.innerHTML.replaceAll(
+            "□",
+            getWeightedRandomObject([
+              { item: emotes._sunglass, weight: 4 },
+              { item: emotes._wow, weight: 1 },
+              { item: emotes._excited, weight: 1.5 },
+            ])
+          );
+        }
+        //pkz and pp energy
+        if (message.includes("kz") || /□□\s*energy/i.test(message)) {
+          element.innerHTML = element.innerHTML.replaceAll(
+            /□(?=.*(?:kz|energy))/gi,
+            emotes._ppp
+          );
+        }
         //laughing
         if (lolcount > 0) {
-          lolcount -= 1;
           element.innerHTML = element.innerHTML.replaceAll(
+            "□",
             getWeightedRandomObject([
               { item: emotes._rofl, weight: 4 },
               { item: emotes._yay, weight: 1.5 },
@@ -154,35 +308,29 @@ if (window.location.href.includes("www.youtube.com/watch")) {
             ])
           );
         }
-        //i hearthand pomu
-        if (message.includes("□□□□□□□")) {
-          element.innerHTML = element.innerHTML.replaceAll(
-            "□□□□□□□",
-            emoteGroup._7_iluvpomu
-          );
-        } //impomu
-        else if (message.includes("□□□□□□")) {
-          element.innerHTML = element.innerHTML.replaceAll(
-            "□□□□□□",
-            emoteGroup._6_impomu
-          );
+        //3 emote groups
+        if (message.includes("□□□") && currentMood === "_song_cover") {
+          if (Math.random() < 0.5) {
+            element.innerHTML = element.innerHTML.replaceAll(
+              "□□□",
+              getWeightedRandomObject([
+                { item: emoteGroup._3_cheer_placehold, weight: 3 },
+                { item: emoteGroup._3_cheer_yay, weight: 2 },
+                { item: emoteGroup._3_cheer_pmdc, weight: 2 },
+                { item: emoteGroup._3_cheer_love, weight: 3 },
+                { item: emoteGroup._3_cheer_cool, weight: 1 },
+              ])
+            );
+          }
         }
-        // cool moment
-        if (message.includes("gamer") || message.includes("gaming")) {
-          element.innerHTML = element.innerHTML.replaceAll(
-            "□",
-            emotes._sunglass
-          );
+        //2 emote groups
+        else if (message.includes("□□")) {
+          if (Math.random() < 0.4) {
+            //50% chance to use emote group, leave the other 50% to single emotes randomizer
+            element.innerHTML.replaceAll("□□", emoteGroup._2_coolOK);
+          }
         }
-        // singing
 
-        //pkz and pp energy
-        if (message.includes("kz") || /□□\s*energy/i.test(message)) {
-          element.innerHTML = element.innerHTML.replaceAll(
-            /□(?=.*(?:kz|energy))/gi,
-            emotes._ppp
-          );
-        }
         //love
         if (message.includes("love")) {
           element.innerHTML = element.innerHTML.replaceAll("□", emotes._love);
@@ -190,18 +338,43 @@ if (window.location.href.includes("www.youtube.com/watch")) {
           //cry
           message.includes("miss") ||
           message.includes("last") ||
-          message.includes("cry")
+          message.includes("cry") ||
+          /we+h+/i.test(message)
         ) {
-          element.innerHTML = element.innerHTML.replaceAll("□", emotes._cry);
+          element.innerHTML = element.innerHTML.replaceAll(
+            "□",
+            getWeightedRandomObject([
+              { item: emotes._cry, weight: 3 },
+              { item: emotes._pien, weight: 1 },
+            ])
+          );
           // wave
-        } else if (message.includes("hi") || message.includes("bye")) {
-          element.innerHTML = element.innerHTML.replaceAll("□", emotes._wave);
+        } else if (
+          /\bhi+\b/i.test(message) ||
+          message.includes("bye") ||
+          /see\s*y(?:a|ou)/i.test(message)
+        ) {
+          element.innerHTML = element.innerHTML.replaceAll(
+            "□",
+            getWeightedRandomObject([
+              { item: emotes._wave, weight: 3 },
+              { item: emotes._pomudachi, weight: 1 },
+            ])
+          );
+        }
+        //pray
+        else if (message.includes("please") || message.includes("pray")) {
+          element.innerHTML = element.innerHTML.replaceAll("□", emotes._pray);
+        }
+        //sippy
+        else if (message.includes("sippy") || message.includes("drink")) {
+          element.innerHTML = element.innerHTML.replaceAll("□", emotes._sippy);
         }
         //the rest is randomized, weights optimized for kokokara cover for now
         else {
           element.innerHTML = element.innerHTML.replaceAll(
             "□",
-            getWeightedRandomObject(mood._song_cover)
+            getWeightedRandomObject(moodRandomWeights[currentMood])
           );
         }
       });

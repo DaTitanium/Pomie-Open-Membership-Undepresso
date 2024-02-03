@@ -2,7 +2,13 @@
 
 Youtube with its questionable practices deletes all membership emotes and badges when memberships close, and while restoring the badges are trivial since they just replaced them with the default badges, restoring the emotes is impossible since they're all turned into empty boxes with no information of what they used to be. So, I made this extension to fill in emotes using hardcoded context clues and randomize the rest.
 
-Current version's randomizer is hardcoded but i want to make it customizable in the future
+Version 0.8 randomizer is hardcoded but i want to make it customizable in the future
+
+## Update V0.9
+
+- There's now a choice of 12 emote randomizers to fit the mood of the chat which you can choose in real time from the extension popup
+- The default randomizer with most variety is for songs, because i tested this mainly on pomu's akiberse MV.
+- Interactivity! It's almost like you're watching live! yippee (delulu)
 
 ## Installing
 
@@ -23,6 +29,6 @@ I made this as a chrome extension and tested it in Google Chrome and Microsoft E
 ### 7. Enjoy pomu's cuteness without being distracted by empty boxes!
 
 ## Additional info
+
 - This extension should run automatically in videos of pomu's channel and not do anything in other videos
-- Might need to refresh the video page after installing the extension
-- I think videos played from autoplay is broken, just refresh again if this happens
+- Because of the way youtube loads everything asynchronously, you might need to refresh the page for every pomu video you want to watch

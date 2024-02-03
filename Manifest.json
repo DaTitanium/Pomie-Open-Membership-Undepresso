@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
     "name": "Pomie Open Membership Undepresso",
-    "version": "0.8",
+    "version": "0.9",
     "description": "An attempt to fill the empty boxes of depression in vods of pomu's channel after the membership is closed",
     "browser_action": {
       "default_popup": "popup.html",
@@ -12,7 +12,8 @@
       }
     },
     "permissions": [
-      "activeTab"
+      "activeTab",
+      "storage"
     ],
     "icons": {
       "16": "images/icon.png",
