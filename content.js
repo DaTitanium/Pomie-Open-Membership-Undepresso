@@ -8,22 +8,34 @@ var currentMood = "_song_cover";
 
 const memberBadge = {
   // member 1 month
-  "https://yt3.ggpht.com/Otv-LqYLhRy6jMTfXN_j8wo7dh0_UxEuAzGM8hhZLzoNdl16NRov8SqniPBUY90jnVMYlklKI0eHLLve=s32-k-nd":
+  "https://yt3.ggpht.com/Otv-LqYLhRy6jMTfXN_j8wo7dh0_UxEuAzGM8hhZLzoNdl16NRov8SqniPBUY90jnVMYlklKI0eHLLve":
+    "https://i.ibb.co/jJtTw4G/1-seed.png",
+  "https://yt3.ggpht.com/vqYWeHsW22q_79B5EsMe7Y6Vp1r7IB8eeV_vCVPfLL0FcgxNFha2YyXifYpkTOj3DPbiZe8ewqEk4JY":
     "https://i.ibb.co/jJtTw4G/1-seed.png",
   //member 2 month
-  "https://yt3.ggpht.com/A4R5j7sscJWTU0NwxoUSBQm4hcVfH7De8jrukuQ_05ITM-lNx5ENqR8zm7LFQXjkmiKj7pF85iBIfklyOg=s32-k-nd":
+  "https://yt3.ggpht.com/A4R5j7sscJWTU0NwxoUSBQm4hcVfH7De8jrukuQ_05ITM-lNx5ENqR8zm7LFQXjkmiKj7pF85iBIfklyOg":
+    "https://i.ibb.co/r5K4pRf/2-sprout.png",
+  "https://yt3.ggpht.com/YinW9wvZMsZEHXow2pR3ZeKiP2YuV6cgl6VdGsFo3tgilLJmaUEnI71KAx87Hf9-nIv1hjBO368xcwed":
     "https://i.ibb.co/r5K4pRf/2-sprout.png",
   //member 3 month
-  "https://yt3.ggpht.com/6YYy6158MQ8Y1a05XVlQUhrXpQRz8T-T2hCOnKhnn_6ysM3JjufMVBnO6oi5rwj-HFPl8A7jqpe2d4uhaQ=s32-k-nd":
+  "https://yt3.ggpht.com/6YYy6158MQ8Y1a05XVlQUhrXpQRz8T-T2hCOnKhnn_6ysM3JjufMVBnO6oi5rwj-HFPl8A7jqpe2d4uhaQ":
+    "https://i.ibb.co/qg1DLwk/3-flower.png",
+  "https://yt3.ggpht.com/pXR9awenP6d6R834AgGxte9GJkrUIH_JEhTQhshA55tMmthEV8smNV8GFUhqgnNAvQEaNSml5EQhIzM":
     "https://i.ibb.co/qg1DLwk/3-flower.png",
   //member 6 month
-  "https://yt3.ggpht.com/gAq7jDekvG5e_Az-VnKhS-Sy-rZDgyHIdGQAhks2iWlN7rMkiTlxnW5ztMW96ynyEIG1hMe67LLLCP6q=s32-k-nd":
+  "https://yt3.ggpht.com/gAq7jDekvG5e_Az-VnKhS-Sy-rZDgyHIdGQAhks2iWlN7rMkiTlxnW5ztMW96ynyEIG1hMe67LLLCP6q":
+    "https://i.ibb.co/7bBPmkr/6-silverpp.png",
+  "https://yt3.ggpht.com/qh4HyXNMbx5x0_HtQ53rpdtMdEv7OTq6hsebWwybYRlKtdYH5m6bq8kviuVZMvxAbGHWH86FV15Opfs":
     "https://i.ibb.co/7bBPmkr/6-silverpp.png",
   //member 1 year
-  "https://yt3.ggpht.com/8EkhzT5LZB8Y1DrCywZwPACLpgvLpFrfkfFtT4Az8za6De8tiPys0k-6tDOSqvn8mfGAz9c8oz_rr9R_=s32-k-nd":
+  "https://yt3.ggpht.com/8EkhzT5LZB8Y1DrCywZwPACLpgvLpFrfkfFtT4Az8za6De8tiPys0k-6tDOSqvn8mfGAz9c8oz_rr9R_":
+    "https://i.ibb.co/hM5YVyb/12-goldenpp.png",
+  "https://yt3.ggpht.com/A7z3O6-V5fqP9Iqir9mCx0ZtclhD_Hd9hEt6maeUUQvkn4oZa9eL5g0c410LMJP52BnVjC7X9IgdAdQ":
     "https://i.ibb.co/hM5YVyb/12-goldenpp.png",
   //member 2 year
-  "https://yt3.ggpht.com/IJi2sP8aHFPN6iCbBPzRgu54MKttJyG39knrNOKfop90WkLcO-BegRNWnZ1PveuTHqPTNO16x2ne5Tw=s32-k-nd":
+  "https://yt3.ggpht.com/IJi2sP8aHFPN6iCbBPzRgu54MKttJyG39knrNOKfop90WkLcO-BegRNWnZ1PveuTHqPTNO16x2ne5Tw":
+    "https://i.ibb.co/wCNxtXN/24-Pomu.png",
+  "https://yt3.ggpht.com/10JOq58eLyZ4iDjJF70DABY58cEy50mehcwRcOJ6d99rBqKRktWLe2voJAtIob8-PAwKISdGtJ_nHeJs":
     "https://i.ibb.co/wCNxtXN/24-Pomu.png",
 };
 
@@ -246,6 +258,26 @@ if (window.location.href.includes("www.youtube.com/watch")) {
   function handleElementUpdate() {
     //only works for pomu videos
     if (isPomu) {
+      //badges
+      const badgelist = frdoc.querySelectorAll(
+        "img.yt-live-chat-author-badge-renderer"
+      );
+      badgelist.forEach((img) => {
+        let baseSource = img.src.split("=")[0];
+        if (baseSource in memberBadge) {
+          img.src = memberBadge[baseSource];
+          //pomu's gift in her last stream
+          if (
+            window.location.href.includes(
+              "https://www.youtube.com/watch?v=tSm0YY70FRo"
+            )
+          ) {
+            img.src = "https://i.ibb.co/wCNxtXN/24-Pomu.png";
+          }
+        }
+      });
+
+      //emotes
       const chatlist = frdoc.querySelectorAll("#message");
       lolcount = 0;
       chatlist.forEach((element) => {
@@ -418,8 +450,9 @@ if (window.location.href.includes("www.youtube.com/watch")) {
       var commentsection = content[0];
       imgs = commentsection.querySelectorAll("img");
       imgs.forEach((img) => {
-        if (img.src in memberBadge) {
-          img.src = memberBadge[img.src];
+        let baseSource = img.src.split("=")[0];
+        if (baseSource in memberBadge) {
+          img.src = memberBadge[baseSource];
         }
       });
       var comments = commentsection.querySelectorAll("yt-formatted-string");
