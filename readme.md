@@ -10,6 +10,12 @@ Version 0.8 randomizer is hardcoded but i want to make it customizable in the fu
 - The default randomizer with most variety is for songs, because i tested this mainly on pomu's akiberse MV.
 - Interactivity! It's almost like you're watching live! yippee (delulu)
 
+## Quick fix V0.9.1
+
+- noticed live chat badges has also disappeared (few days ago only comment badges are gone)
+- live chat badges restored
+- added special condition for the last stream where every badge is the 2 years badge
+
 ## Installing
 
 I made this as a chrome extension and tested it in Google Chrome and Microsoft Edge but it should be supported by some other browsers that uses chromium, e.g. Opera.
